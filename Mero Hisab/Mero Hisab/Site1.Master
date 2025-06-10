@@ -1,0 +1,99 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="last_hour.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+</style>
+    <style>
+body {
+  background-image: url('images/brick.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+ 
+}
+</style>
+
+    <style type="text/css">
+        .auto-style1 {
+            margin-right: 150px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="form1" runat="server">
+        <p>
+            <asp:Button ID="ButtonConcreteCalculate" class="button button1" runat="server" OnClick="ButtonConcreteCalculate_Click" Text="Concrete Calculate" BackColor="#FF6600" BorderColor="#006600" BorderStyle="Double" />
+            <asp:Button ID="ButtonPlasterCalculate"  class="button button1" runat="server" OnClick="ButtonPlasterCalculate_Click" Text="Plaster Calculate" BackColor="#FF6600" BorderColor="#006600" BorderStyle="Double" />
+            <asp:Button ID="ButtonBuildingEstimator" class="button button1"  runat="server" BackColor="#FF6600" BorderColor="#006600" BorderStyle="Double" OnClick="ButtonBuildingEstimator_Click" Text="Building Estimator" />
+            <asp:Button ID="ButtonBrickCalculator" class="button button1" runat="server" BackColor="#FF6600" BorderColor="#006600" BorderStyle="Double" OnClick="ButtonBrickCalculator_Click" Text="Brick Calculator" />
+            <asp:Button ID="ButtonCarpenting" class="button button1" runat="server" BackColor="#FF6600" BorderColor="#006600" BorderStyle="Double" OnClick="ButtonCarpenting_Click" Text="Carpenting Calculator" />
+            <asp:Button ID="ButtonSteel" class="button button1" runat="server" BackColor="#FF6600" BorderColor="#006600" BorderStyle="Double" OnClick="ButtonSteel_Click" Text="Steel Calculator" />
+            &nbsp;&nbsp;
+            <asp:LoginStatus ID="LoginStatus1" runat="server" />
+            <br />
+            &nbsp;<asp:Label ID="Label1" runat="server" Text="Please Insert Data in Meters" BackColor="#006600" BorderColor="#FF6600" BorderStyle="Double"></asp:Label>
+        </p>
+        <p class="auto-style1">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="Label2" runat="server" BackColor="White" BorderColor="#006600" CssClass="auto-style1" Font-Bold="True" Font-Names="Alien Encounters" Font-Overline="False" Font-Size="XX-Large" Font-Strikeout="False" ForeColor="#FF6600" Text="Mero Hisab"></asp:Label>
+        </p>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="LoginUser" DataSourceID="SqlDataSource2" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Visible="False">
+            <Columns>
+                <asp:BoundField DataField="LoginUser" HeaderText="LoginUser" ReadOnly="True" SortExpression="LoginUser" />
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:FYPConnectionString %>" SelectCommand="SELECT * FROM [LoginUser]"></asp:SqlDataSource>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <br />
+                <br />
+                <br />
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
